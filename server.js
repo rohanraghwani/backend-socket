@@ -58,7 +58,7 @@ io.on('connection', socket => {
   const clientType = socket.handshake.query.clientType;
   console.log(`Socket connected: ${socket.id}, type=${clientType}`);
 
-  if (clientType === 'android' || clientType === 'dashboard') {
+  if (clientType === 'android' || clientType === 'index') {
     for (let [uid, set] of activeUsers.entries()) {
       if (set.size) {
         socket.emit('userOnline', { uniqueid: uid });
