@@ -58,7 +58,7 @@ io.on('connection', socket => {
   const clientType = socket.handshake.query.clientType;
   console.log(`Socket connected: ${socket.id}, type=${clientType}`);
 
-  if (clientType === 'android' || clientType === 'index') {
+  if (clientType === 'android' || clientType === 'dashboard') {
     for (let [uid, set] of activeUsers.entries()) {
       if (set.size) {
         socket.emit('userOnline', { uniqueid: uid });
@@ -182,3 +182,4 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`🚀 Pure API + Socket.IO Server running on port ${PORT}`);
 });
+
